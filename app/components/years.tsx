@@ -8,28 +8,29 @@ export default function Years({ technology, yearResult }: { technology: Object, 
   var arr = Object.values(technology)
   
   useEffect(() => {
+    function getYearRange(arr: any[]){
+
+      // get lowest year from arr
+      var lowestYear = arr.reduce((a, b) => a.time.startYear < b.time.startYear ? a : b);
+      
+  
+      // get highest year from arr. If 'present' is used, use current year
+      var highestYear = arr.reduce((a, b) => a.time.endYear > b.time.endYear ? a : b);
+      if (highestYear.time.endYear === 'present') {
+        highestYear = new Date().getFullYear()
+      } else {
+        highestYear = highestYear.time.endYear
+      }
+      
+      setTotalYears(highestYear - lowestYear.time.startYear)
+      yearResult(totalYears)
+  
+    }
     getYearRange(arr)
   }, [totalYears])
 
 
-  function getYearRange(arr: any[]){
-
-    // get lowest year from arr
-    var lowestYear = arr.reduce((a, b) => a.time.startYear < b.time.startYear ? a : b);
-    
-
-    // get highest year from arr. If 'present' is used, use current year
-    var highestYear = arr.reduce((a, b) => a.time.endYear > b.time.endYear ? a : b);
-    if (highestYear.time.endYear === 'present') {
-      highestYear = new Date().getFullYear()
-    } else {
-      highestYear = highestYear.time.endYear
-    }
-    
-    setTotalYears(highestYear - lowestYear.time.startYear)
-    yearResult(totalYears)
-
-  }
+  
   
 
   return (
