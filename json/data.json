@@ -1,0 +1,28 @@
+{
+  "technology": [
+    {
+      "id": 1,
+      "name": "Jekyll",
+      "time": {
+        "startYear": 2017,
+        "endYear": 2018
+      }
+    },
+    {
+      "id": 2,
+      "name": "Gatsby.js",
+      "time": {
+        "startYear": 2018,
+        "endYear": "present"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Next.js",
+      "time": {
+        "startYear": 2021,
+        "endYear": "present"
+      }
+    }
+  ]
+}
